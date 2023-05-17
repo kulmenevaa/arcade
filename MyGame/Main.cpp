@@ -2,10 +2,10 @@
 
 using namespace MyGame;
 
-/* Точка входа приложения */
+/* Application entry point */
 int main(cli::array<String^>^ arr) {
-	Application::EnableVisualStyles(); // Подключение стилей к приложению
-	Application::SetCompatibleTextRenderingDefault(false); // Установка метода отображения текста
+	Application::EnableVisualStyles(); // Connecting styles to an application
+	Application::SetCompatibleTextRenderingDefault(false); // Setting the text display method
 	Carte ^ startWindow = gcnew Carte;
 	startWindow->Show();
 	Application::Run();
