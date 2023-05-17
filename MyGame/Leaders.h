@@ -17,9 +17,6 @@ namespace MyGame {
 				delete components;
 			}
 		}
-
-
-
 	private: System::Windows::Forms::Panel^ panel;
 	private: System::Windows::Forms::Label^ title;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
@@ -29,36 +26,6 @@ namespace MyGame {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ score;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ level;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ speed;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private:
 		System::ComponentModel::Container ^components;
 
@@ -112,25 +79,25 @@ namespace MyGame {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::Black;
 			this->username->DefaultCellStyle = dataGridViewCellStyle1;
-			this->username->HeaderText = L"Пользователь";
+			this->username->HeaderText = L"User";
 			this->username->Name = L"username";
 			this->username->Width = 120;
 			// 
 			// score
 			// 
-			this->score->HeaderText = L"Рекорд";
+			this->score->HeaderText = L"Record";
 			this->score->Name = L"score";
 			this->score->Width = 80;
 			// 
 			// level
 			// 
-			this->level->HeaderText = L"Уровень";
+			this->level->HeaderText = L"Level";
 			this->level->Name = L"level";
 			this->level->Width = 70;
 			// 
 			// speed
 			// 
-			this->speed->HeaderText = L"Скорость";
+			this->speed->HeaderText = L"Speed";
 			this->speed->Name = L"speed";
 			this->speed->Width = 70;
 			// 
@@ -162,7 +129,7 @@ namespace MyGame {
 			this->title->Name = L"title";
 			this->title->Size = System::Drawing::Size(154, 25);
 			this->title->TabIndex = 39;
-			this->title->Text = L"Лидеры игры";
+			this->title->Text = L"Game Leaders";
 			// 
 			// pictureBox1
 			// 
@@ -206,13 +173,13 @@ namespace MyGame {
 		}
 		private: Void Leaders_Load(Object^ sender, EventArgs^ e) {
 			String^ connectionString = "provider = Microsoft.Jet.OLEDB.4.0;Data source = db.mdb";
-			OleDbConnection^ dbConntection = gcnew OleDbConnection(connectionString); // настройки
-			dbConntection->Open(); // открытия соединения
-			String^ query = "SELECT * FROM [leader] ORDER BY [level] DESC, [score] DESC"; // запрос
-			OleDbCommand^ dbCommand = gcnew OleDbCommand(query, dbConntection); // команда
-			OleDbDataReader^ dbReader = dbCommand->ExecuteReader(); // считывание данных
+			OleDbConnection^ dbConntection = gcnew OleDbConnection(connectionString); // settings
+			dbConntection->Open(); // opening a connection
+			String^ query = "SELECT * FROM [leader] ORDER BY [level] DESC, [score] DESC"; // request
+			OleDbCommand^ dbCommand = gcnew OleDbCommand(query, dbConntection); // command
+			OleDbDataReader^ dbReader = dbCommand->ExecuteReader(); // data reading
 			if (dbReader->HasRows == false) {
-				MessageBox::Show("Ошибка считывания данных!", "Ошибка!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				MessageBox::Show("Data read error!", "Error!", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 			else {
 				while (dbReader->Read()) {
@@ -220,7 +187,7 @@ namespace MyGame {
 				}
 			}
 			dbReader->Close();
-			dbConntection->Close(); // закрытие соединения
+			dbConntection->Close(); // close the connection
 		}
 	};
 }
