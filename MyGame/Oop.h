@@ -30,8 +30,8 @@ Track::Track(int score) {
 void Track::SetScore(int score) {
 	if (score != 0) {
 		MessageBox::Show(
-			"Старт подсчета результата игры был скорректирован!\nУказанные данные не соответствуют специфики игры!",
-			"Оповещение!",
+			"The start of the calculation of the result of the game has been corrected!\nThe specified data does not correspond to the specifics of the game!",
+			"Alert!",
 			MessageBoxButtons::OK,
 			MessageBoxIcon::Information
 		);
@@ -81,8 +81,8 @@ Gamer::Gamer(bool drive, int speed, int level, int increase_level, int score, st
 void Gamer::SetSpeed(int speed) {
 	if (speed <= 0) {
 		MessageBox::Show(
-			"Скорость автомобиля была изменана!\nУказанные данные не соответствуют специфики игры!", 
-			"Оповещение!", 
+			"Vehicle speed has been changed!\nThe specified data does not match the specifics of the game!", 
+			"Alert!", 
 			MessageBoxButtons::OK,
 			MessageBoxIcon::Information
 		);
@@ -94,8 +94,8 @@ void Gamer::SetSpeed(int speed) {
 void Gamer::SetDrive(bool drive) {
 	if (drive == false) {
 		MessageBox::Show(
-			"Движение автомобиля скорректировано!\nУказанные данные не соответствуют специфики игры!",
-			"Оповещение!",
+			"The movement of the car has been corrected!\nThe specified data does not correspond to the specifics of the game!",
+			"Alert!",
 			MessageBoxButtons::OK,
 			MessageBoxIcon::Information
 		);
@@ -107,8 +107,8 @@ void Gamer::SetDrive(bool drive) {
 void Gamer::SetLevel(int level) {
 	if (level < 0) {
 		MessageBox::Show(
-			"Уровень пользователя был скорректирован!\nУказанные данные не соответствуют специфики игры!",
-			"Оповещение!",
+			"The user level has been adjusted!\nThe specified data does not correspond to the specifics of the game!",
+			"Alert!",
 			MessageBoxButtons::OK,
 			MessageBoxIcon::Information
 		);
@@ -120,8 +120,8 @@ void Gamer::SetLevel(int level) {
 void Gamer::SetIncreaseLevel(int increase_level) {
 	if (increase_level != 0) {
 		MessageBox::Show(
-			"Начало подсчета перехода на другой уровень был скорректирован!\nУказанные данные не соответствуют специфики игры!",
-			"Оповещение!",
+			"The start of the level transition count has been corrected!\nThe specified data does not correspond to the specifics of the game!",
+			"Alert!",
 			MessageBoxButtons::OK,
 			MessageBoxIcon::Information
 		);
@@ -133,8 +133,8 @@ void Gamer::SetIncreaseLevel(int increase_level) {
 void Gamer::SetUsername(string username) {
 	if (username == "") {
 		MessageBox::Show(
-			"Наименование пользователя было скорректировано!\nУказанные данные не соответствуют спецификации игры!",
-			"Оповещение!",
+			"The username has been corrected!\nThe given data does not match the game specification!",
+			"Alert!",
 			MessageBoxButtons::OK,
 			MessageBoxIcon::Information
 		);
@@ -144,38 +144,38 @@ void Gamer::SetUsername(string username) {
 }
 
 void Gamer::Save(string username, int score, int level, int speed) {
-	String^ username_str = gcnew System::String(username.c_str()); // конвертация из string в System::String
-	String^ connectionString = "provider = Microsoft.Jet.OLEDB.4.0;Data source = db.mdb"; // настройки
-	OleDbConnection^ dbConntection = gcnew OleDbConnection(connectionString); // подключение настроек
-	dbConntection->Open(); // открытия соединения
-	String^ query = "INSERT INTO [leader] ([username], [score], [level], [speed]) VALUES ('" + username_str + "', " + score + ", " + level + ", " + speed + ")"; // запрос
-	OleDbCommand^ dbCommand = gcnew OleDbCommand(query, dbConntection); // команда выполнения запроса
-	if (dbCommand->ExecuteNonQuery() == 1) { // проверка добавления записи в БД
+	String^ username_str = gcnew System::String(username.c_str()); // converting from string to System::String
+	String^ connectionString = "provider = Microsoft.Jet.OLEDB.4.0;Data source = db.mdb"; // settings
+	OleDbConnection^ dbConntection = gcnew OleDbConnection(connectionString); // connecting settings
+	dbConntection->Open(); // opening a connection
+	String^ query = "INSERT INTO [leader] ([username], [score], [level], [speed]) VALUES ('" + username_str + "', " + score + ", " + level + ", " + speed + ")"; // request
+	OleDbCommand^ dbCommand = gcnew OleDbCommand(query, dbConntection); // query execution command
+	if (dbCommand->ExecuteNonQuery() == 1) { // checking if a record has been added to the database
 		MessageBox::Show(
-			"Результаты успешно сохранены в БД! Вы можете посмотреть все результате в разделе ЛИДЕРЫ",
-			"Оповещение!",
+			"The results have been successfully saved to the database! You can see all the results in the LEADERS section!",
+			"Alert!",
 			MessageBoxButtons::OK,
 			MessageBoxIcon::Information
 		);
 	}
 	else {
 		MessageBox::Show(
-			"Произошла ошибка при добавлении результатов в БД!",
-			"Ошибка!",
+			"An error occurred while adding results to the database!",
+			"Error!",
 			MessageBoxButtons::OK,
 			MessageBoxIcon::Error
 		);
 	}
-	dbConntection->Close(); // закрытие соединения
+	dbConntection->Close(); // close the connection
 }
 
 void Gamer::Result(int score, int level, int speed) {
 	MessageBox::Show(
-		"Игра окончена!\n" +
-		"Ваш результат : " + score + "\n" +
-		"Уровень: " + level + "\n" +
-		"Скорость: " + speed,
-		"Оповещение!",
+		"Game over!\n" +
+		"Your score: " + score + "\n" +
+		"Level: " + level + "\n" +
+		"Speed: " + speed,
+		"Alert!",
 		MessageBoxButtons::OK,
 		MessageBoxIcon::Information);
 }
