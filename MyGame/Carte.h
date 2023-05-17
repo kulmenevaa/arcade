@@ -72,7 +72,7 @@ namespace MyGame {
 			this->title->Name = L"title";
 			this->title->Size = System::Drawing::Size(168, 25);
 			this->title->TabIndex = 35;
-			this->title->Text = L"Главное меню";
+			this->title->Text = L"Main menu";
 			// 
 			// exit
 			// 
@@ -101,7 +101,7 @@ namespace MyGame {
 			this->game->Name = L"game";
 			this->game->Size = System::Drawing::Size(216, 53);
 			this->game->TabIndex = 40;
-			this->game->Text = L"Играть";
+			this->game->Text = L"Play";
 			this->game->UseVisualStyleBackColor = false;
 			this->game->Click += gcnew System::EventHandler(this, &Carte::game_Click);
 			// 
@@ -115,7 +115,7 @@ namespace MyGame {
 			this->settings->Name = L"settings";
 			this->settings->Size = System::Drawing::Size(216, 53);
 			this->settings->TabIndex = 41;
-			this->settings->Text = L"Лидеры";
+			this->settings->Text = L"Leaders";
 			this->settings->UseVisualStyleBackColor = false;
 			this->settings->Click += gcnew System::EventHandler(this, &Carte::settings_Click);
 			// 
@@ -129,7 +129,7 @@ namespace MyGame {
 			this->output->Name = L"output";
 			this->output->Size = System::Drawing::Size(216, 53);
 			this->output->TabIndex = 42;
-			this->output->Text = L"Выйти";
+			this->output->Text = L"Output";
 			this->output->UseVisualStyleBackColor = false;
 			this->output->Click += gcnew System::EventHandler(this, &Carte::output_Click);
 			// 
