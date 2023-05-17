@@ -271,7 +271,7 @@ namespace MyGame {
 			this->title->Name = L"title";
 			this->title->Size = System::Drawing::Size(131, 25);
 			this->title->TabIndex = 82;
-			this->title->Text = L"Результат:";
+			this->title->Text = L"Result:";
 			// 
 			// result
 			// 
@@ -340,7 +340,7 @@ namespace MyGame {
 			this->username_label->Name = L"username_label";
 			this->username_label->Size = System::Drawing::Size(204, 18);
 			this->username_label->TabIndex = 94;
-			this->username_label->Text = L"Введите имя пользователя:";
+			this->username_label->Text = L"Enter username:";
 			// 
 			// username_field
 			// 
@@ -362,7 +362,7 @@ namespace MyGame {
 			this->save_result->Name = L"save_result";
 			this->save_result->Size = System::Drawing::Size(216, 53);
 			this->save_result->TabIndex = 3;
-			this->save_result->Text = L"Сохранить";
+			this->save_result->Text = L"Save";
 			this->save_result->UseVisualStyleBackColor = false;
 			this->save_result->Click += gcnew System::EventHandler(this, &Play::save_result_Click);
 			// 
@@ -376,7 +376,7 @@ namespace MyGame {
 			this->restart->Name = L"restart";
 			this->restart->Size = System::Drawing::Size(216, 53);
 			this->restart->TabIndex = 1;
-			this->restart->Text = L"Играть сначала";
+			this->restart->Text = L"Restart";
 			this->restart->UseVisualStyleBackColor = false;
 			this->restart->Click += gcnew System::EventHandler(this, &Play::restart_Click);
 			// 
@@ -391,7 +391,7 @@ namespace MyGame {
 			this->carte->Size = System::Drawing::Size(216, 53);
 			this->carte->TabIndex = 4;
 			this->carte->TabStop = false;
-			this->carte->Text = L"Главное меню";
+			this->carte->Text = L"Main menu";
 			this->carte->UseVisualStyleBackColor = false;
 			this->carte->Click += gcnew System::EventHandler(this, &Play::carte_Click);
 			// 
@@ -405,7 +405,7 @@ namespace MyGame {
 			this->save->Name = L"save";
 			this->save->Size = System::Drawing::Size(216, 53);
 			this->save->TabIndex = 2;
-			this->save->Text = L"Сохранить результат";
+			this->save->Text = L"Save result";
 			this->save->UseVisualStyleBackColor = false;
 			this->save->Click += gcnew System::EventHandler(this, &Play::save_Click);
 			// 
@@ -420,7 +420,7 @@ namespace MyGame {
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(172, 25);
 			this->label1->TabIndex = 35;
-			this->label1->Text = L"Игра окончена";
+			this->label1->Text = L"Game Over";
 			// 
 			// pictureBox11
 			// 
@@ -466,7 +466,7 @@ namespace MyGame {
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(85, 20);
 			this->label6->TabIndex = 90;
-			this->label6->Text = L"Уровень:";
+			this->label6->Text = L"Level:";
 			// 
 			// label7
 			// 
@@ -479,7 +479,7 @@ namespace MyGame {
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(94, 20);
 			this->label7->TabIndex = 91;
-			this->label7->Text = L"Скорость:";
+			this->label7->Text = L"Speed:";
 			// 
 			// myspeed
 			// 
@@ -492,7 +492,7 @@ namespace MyGame {
 			this->myspeed->Name = L"myspeed";
 			this->myspeed->Size = System::Drawing::Size(60, 20);
 			this->myspeed->TabIndex = 92;
-			this->myspeed->Text = L"0 км/ч";
+			this->myspeed->Text = L"0 km/h";
 			// 
 			// Play
 			// 
@@ -564,17 +564,17 @@ namespace MyGame {
 			int speed;
 
 		private: Void Play_Load(Object^  sender, EventArgs^  e) {
-			lines = gcnew cli::array<PictureBox^>(5) { line1, line2, line3, line4, line5 }; // массив из линий
-			obstacles = gcnew cli::array<PictureBox^>(4) { let1, let2, let3, let4 }; // массив из препятствий
-			over->Visible = false; // скрыть форму окончания игры
-			save_result->Visible = false; // скрыть кнопку сохранения 
-			username_label->Visible = false; // скрыть название поля ввода имени пользователя
-			username_field->Visible = false; // скрыть поле ввода имени пользователя
-			timer1->Enabled = true; // запустить таймер игры
+			lines = gcnew cli::array<PictureBox^>(5) { line1, line2, line3, line4, line5 }; // array of lines
+			obstacles = gcnew cli::array<PictureBox^>(4) { let1, let2, let3, let4 }; // array of obstacles
+			over->Visible = false; // hide game over form
+			save_result->Visible = false; // hide save button
+			username_label->Visible = false; // hide the name of the username input field
+			username_field->Visible = false; // hide username input field
+			timer1->Enabled = true; // start game timer
 
 			Random rand;
 
-			for (int i = 0; i < obstacles->Length; i++) { // расстановка препятствий
+			for (int i = 0; i < obstacles->Length; i++) { // placement of obstacles
 				if (i < 2) {
 					obstacles[i]->Location = Point(
 						rand.Next(left_border->Width, this->Width / 2 - obstacles[i]->Width - line1->Width),
@@ -605,7 +605,7 @@ namespace MyGame {
 			mycar->Location = Point(
 				this->Width / 2 - mycar->Width / 2,
 				this->Height - mycar->Height - bottom_border->Height
-			); // локация автомобиля пользователя
+			); // user car location
 		}
 
 		private: Void Play_KeyDown(Object^  sender, KeyEventArgs^  e) {
@@ -634,7 +634,7 @@ namespace MyGame {
 		private: Void moveobstacle(int speed) {
 			Random rand;
 			int num = rand.Next(1, 9);
-			for (int i = 0; i < obstacles->Length; i++) { // расстановка препятствий
+			for (int i = 0; i < obstacles->Length; i++) { // placement of obstacles
 				if (obstacles[i]->Top >= this->Height) {
 					switch (num) {
 						case 1:
@@ -719,7 +719,7 @@ namespace MyGame {
 			
 			result->Text = score.ToString();
 			mylvl->Text = level.ToString();
-			myspeed->Text = speed.ToString() + " км/ч";
+			myspeed->Text = speed.ToString() + " ГЄГ¬/Г·";
 		}
 
 		private: Void upgame() {
